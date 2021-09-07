@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} DoctorNote {% endblock title %}</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tailwind-output.css' %}" rel="stylesheet">
+</head>
+
+<body class="text-gray-800 antialiased">
+    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
+        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+            <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+                <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+                    href="">DoctorNote
+                    Kit</a>
+            </div>
+            <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
+                id="example-collapse-navbar">
+                <ul class="flex flex-col lg:flex-row list-none mr-auto">
+                    <li class="flex items-center">
+                        <a class="lg:text-white lg:hover:text-gray-700 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                            href=""><i
+                                class="lg:text-gray-300text-gray-500 far fa-file-alt text-lg leading-lg mr-2"></i>
+                            Docs</a>
+                    </li>
+                </ul>
+                <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+                    <li class="flex items-center">
+                        <button
+                            class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                            type="button" style="transition: all 0.15s ease 0s;">
+                            <i class="fas fa-arrow-alt-circle-down"></i> Tutorial
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="absolute w-full h-full">
+            <div class="absolute top-0 w-full h-full bg-green-300"
+                style="background-image: url({% static 'images/template/register_bg_2.png' %}); background-size: 100%; background-repeat: no-repeat;">
+            </div>
+
+            {% block content %}
+            {% endblock content %}
+
+            <footer class="absolute w-full bottom-0 bg-green-300 pb-6">
+                <div class="container mx-auto px-4">
+                    <hr class="mb-6 border-b-1 border-white" />
+                    <div class="flex flex-wrap items-center md:justify-between justify-center">
+                        <div class="w-full md:w-4/12 px-4">
+                            <div class="text-sm text-white font-semibold py-1">
+                                Copyright © 2021
+                                <a href="https://www.ncrousset.info"
+                                    class="text-white hover:text-gray-700 text-sm font-semibold py-1">Rudys Acosta</a>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-8/12 px-4">
+                            <ul class="flex flex-wrap list-none md:justify-end  justify-center">
+                                <li>
+                                    <a href=""
+                                        class="text-white hover:text-gray-700 text-sm font-semibold block py-1 px-3">About
+                                        Us</a>
+                                </li>
+                                <li>
+                                    <a href=""
+                                        class="text-white hover:text-gray-700 text-sm font-semibold block py-1 px-3">Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </main>
+</body>
+
+</html>

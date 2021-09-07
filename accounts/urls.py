@@ -1,5 +1,1 @@
-from django.urls import reverse_lazy
-
-urlpatterns = [
-
-]
+from django.urls import path

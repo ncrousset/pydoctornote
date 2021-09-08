@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Patients list
+{% endblock title %}
+
+
+{% block content %}
+{% for patient in patients %}
+<section class="text-gray-600 body-font mb-20">
+    <div class="container px-5 py-24 mx-auto flex flex-col">
+        {{ patient.full_name }}
+    </div>
+</section>
+{% endfor %}
+{% endblock content %}

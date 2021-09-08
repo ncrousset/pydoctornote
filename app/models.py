@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser as User
+from django.urls import reverse
 
 
 class Patient(models.Model):
@@ -30,3 +31,6 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    def get_absolute_url(self):
+        return reverse("detail_patient", kwargs={"pk": self.pk})

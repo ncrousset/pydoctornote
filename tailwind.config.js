@@ -7,13 +7,13 @@ module.exports = {
         128: '32rem',
       },
     },
-    colors: {
-      blue: {
-        light: '#48C9B0',
-        DEFAULT: '#48C9B0',
-        dark: '#48C9B0',
-      },
-    },
+    // colors: {
+    //   blue: {
+    //     light: '#48C9B0',
+    //     DEFAULT: '#48C9B0',
+    //     dark: '#48C9B0',
+    //   },
+    // },
   },
   variants: {
     extend: {},

@@ -38,6 +38,7 @@
 
         {% block content %}
         {% endblock content %}
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
         <footer class="absolute w-full bottom-0  pb-6">
             <div class="container mx-auto px-4 ">
                 <hr class="mb-6" />
@@ -67,6 +68,7 @@
             </div>
         </footer>
     </section>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

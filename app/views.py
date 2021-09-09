@@ -1,5 +1,6 @@
+from django.core.checks import messages
 from .models import Patient
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import CreateView
 from .forms import PatientForm
 from accounts.models import CustomUser as User
@@ -21,7 +22,14 @@ def list_patient_view(request):
 
 
 def patient_view(request, pk: int):
-    return render(request, 'app/patients_view.html')
+
+    patient = Patient.objects.get(pk=pk)
+
+    patients_dict = {
+        'patient': patient
+    }
+
+    return render(request, 'app/patient_view.html', patients_dict)
 
 
 class PatientCreateView(CreateView):
@@ -35,5 +43,8 @@ class PatientCreateView(CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-
+        errors = {
+            messages: "Error we can't save the patient"
+        }
+        redirect('list_patient_view', errors)
         return super().form_invalid(form)

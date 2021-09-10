@@ -10,6 +10,7 @@ psycopg2 = "*"
 whitenoise = "*"
 django-widget-tweaks = "*"
 gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

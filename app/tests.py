@@ -91,3 +91,5 @@ class PatientTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.patient.full_name)
         self.assertTemplateUsed(response, 'app/patient_view.html')
+
+    def test_detail_view_contain_all_the_data

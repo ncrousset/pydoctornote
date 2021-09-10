@@ -34,7 +34,7 @@
         <div class="flex flex-wrap -m-2">
             {% for patient in patients %}
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full ">
-                <a href="">
+                <a href="{% url 'detail_patient' patient.id %}">
                     <div
                         class="h-full flex items-center border-gray-200 border p-4 text-gray-900 hover:bg-green-400 hover:text-white">
                         <img alt="team"

@@ -1,6 +1,6 @@
 from django.http import response
 from django.test import TestCase, SimpleTestCase, Client
-from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, get_user_model
 from django.urls import reverse
 
 from app.models import Patient
@@ -13,11 +13,15 @@ from datetime import date
 class PatientTest(TestCase):
 
     def setUp(self):
+
         self.user = get_user_model().objects.create_user(
             username='testuser',
             email='testuser@gmail.com',
             password='test'
         )
+
+        self.client = Client()
+        self.client.login(username='testuser', password='test')
 
         self.patient = Patient.objects.create(
             first_name='Natanael',

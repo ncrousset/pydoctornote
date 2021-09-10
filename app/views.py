@@ -43,7 +43,7 @@ class PatientCreateView(LoginRequiredMixin, CreateView):
     template_name = 'app/forms/patient_create_form.html'
 
     def form_valid(self, form):
-        form.instance.user_id = User.objects.last()
+        form.instance.user_id = self.request.user
 
         return super().form_valid(form)
 

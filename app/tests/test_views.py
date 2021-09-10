@@ -104,3 +104,26 @@ class PatientTest(TestCase):
         self.assertContains(response, self.patient.idd)
         self.assertContains(response, self.patient.phone)
         self.assertContains(response, self.patient.sex_title)
+
+    def test_user_can_update_a_patient(self):
+        data = {
+            'first_name': 'New Pedro',
+            'last_name': 'Lopez',
+            'birth_date': '2001-02-15',
+            'email': 'estephany@gmail.com',
+            'insurance': '121542',
+            'idd': '45545',
+            'phone': '80954855',
+            'sex': 'm',
+            'next_appointment': '2021-11-20'
+        }
+
+        form = PatientForm(data)
+        response = self.client.post(
+            reverse('update_patient', kwargs={"pk": self.patient.id}), data)
+
+        self.assertEqual(response.status_code, 302)
+
+        """ Get the last patient"""
+        patient = Patient.objects.last()
+        self.assertEqual(patient.first_name, 'New Pedro')

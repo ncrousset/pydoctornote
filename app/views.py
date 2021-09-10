@@ -1,4 +1,4 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -30,8 +30,11 @@ def patient_view(request, pk: int):
 
     patient = Patient.objects.get(pk=pk)
 
+    form = PatientForm(instance=patient)
+
     patients_dict = {
-        'patient': patient
+        'patient': patient,
+        'form': form
     }
 
     return render(request, 'app/patient_view.html', patients_dict)
@@ -53,3 +56,9 @@ class PatientCreateView(LoginRequiredMixin, CreateView):
         }
         redirect('list_patient_view', errors)
         return super().form_invalid(form)
+
+
+class PatientUpdateView(LoginRequiredMixin, UpdateView):
+    model = Patient
+    form_class = PatientForm
+    template_name = 'app/forms/patient_update_form.html'

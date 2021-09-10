@@ -1,0 +1,79 @@
+{% load widget_tweaks %}
+
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-id">
+    <div class="relative w-auto my-6 ">
+        <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div class="flex items-start justify-between p-3 border-b border-solid border-blueGray-200 rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Edit patient
+                </h3>
+            </div>
+            <form action="{% url 'update_patient' 1 %}" method="POST"> {% csrf_token %}
+                <div class="relative p-3 flex-auto">
+
+                    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+
+                        <div>
+                            <label for="first_name ">First name</label>
+                            {% render_field form.first_name class="form_input_text"%}
+                        </div>
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="last_name">Last name</label>
+                            {% render_field form.last_name class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="birth_date">Birth date</label>
+                            {% render_field form.birth_date class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="sex">Sex</label>
+                            {% render_field form.sex class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="email">Email</label>
+                            {% render_field form.email class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="insurance">Insurance</label>
+                            {% render_field form.insurance class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="idd">Idd</label>
+                            {% render_field form.idd class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="phone">Phone</label>
+                            {% render_field form.phone class="form_input_text"%}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="phone">Next appointment</label>
+                            {% render_field form.next_appointment class="form_input_text"%}
+                        </div>
+                    </div>
+
+                </div>
+                <!--footer-->
+                <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <button
+                        class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button" onclick="toggleModal('modal-id')">
+                        Close
+                    </button>
+                    <button type="submit"
+                        class="bg-emerald-500 bg-green-400 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

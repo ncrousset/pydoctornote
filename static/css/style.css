@@ -2,10 +2,13 @@ html {
     
 }
 
+
+
 body {
-    margin: 0;
-    display: block;
-}
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
 .form_input_text {
     width: 100%;

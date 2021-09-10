@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <section class="absolute w-full h-full">
+    <div class="flex flex-col h-screen">
         <header class="text-gray-600 body-font">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                 <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
@@ -66,10 +66,16 @@
             </div>
         </header>
 
-        {% block content %}
-        {% endblock content %}
-        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-        <footer class="absolute w-full bottom-0  pb-6">
+
+        <main class="flex-grow">
+            {% block content %}
+            {% endblock content %}
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+
+        </main>
+
+
+        <footer class=" bottom-0 inset-x-0 p-4">
             <div class="container mx-auto px-4 ">
                 <hr class="mb-6" />
                 <div class="flex flex-wrap items-center md:justify-between justify-center">
@@ -97,7 +103,7 @@
                 </div>
             </div>
         </footer>
-    </section>
+    </div>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 

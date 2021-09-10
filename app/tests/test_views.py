@@ -3,9 +3,9 @@ from django.test import TestCase, SimpleTestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from .models import Patient
+from app.models import Patient
 
-from .forms import PatientForm
+from app.forms import PatientForm
 
 from datetime import date
 
@@ -31,10 +31,6 @@ class PatientTest(TestCase):
             next_appointment='2021-05-18',
             user_id=self.user
         )
-
-    def test_string_representation(self):
-        patient = Patient(first_name='Natanael', last_name='Acosta')
-        self.assertEqual(str(patient), self.patient.full_name)
 
     def test_user_can_create_patient(self):
         data = {'first_name': 'Test', 'last_name': 'Test Last', 'sex': 'o'}
@@ -89,7 +85,18 @@ class PatientTest(TestCase):
         response = self.client.get(
             reverse('detail_patient', kwargs={"pk": self.patient.id}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.patient.full_name)
+
         self.assertTemplateUsed(response, 'app/patient_view.html')
 
-    def test_detail_view_contain_all_the_data
+    def test_user_can_see_the_fields_of_patient(self):
+        response = self.client.get(
+            reverse('detail_patient', kwargs={"pk": self.patient.id}))
+
+        self.assertContains(response, self.patient.full_name)
+        self.assertContains(response, self.patient.first_name)
+        self.assertContains(response, self.patient.last_name)
+        self.assertContains(response, self.patient.email)
+        self.assertContains(response, self.patient.insurance)
+        self.assertContains(response, self.patient.idd)
+        self.assertContains(response, self.patient.phone)
+        self.assertContains(response, self.patient.sex_title)

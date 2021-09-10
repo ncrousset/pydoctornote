@@ -29,6 +29,19 @@ class Patient(models.Model):
         """Returns the patient's full name"""
         return f"{self.first_name} {self.last_name}"
 
+    @property
+    def sex_title(self):
+        """Return the sex explicit ('male', 'feminine', 'other')"""
+
+        sex_title = {'m': 'masculine',
+                     'f': 'feminine',
+                     'o': 'other'}
+
+        if self.sex != '':
+            return sex_title[self.sex]
+
+        return ''
+
     def __str__(self):
         return self.full_name
 

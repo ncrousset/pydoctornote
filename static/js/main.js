@@ -8,11 +8,9 @@ function toggleModal(modalID) {
 
 // add style classes for the active link, where the user is browsing
 function decorationLink() {
-
     let path = location.pathname
-
     let link = {
-        '/app/patients': 'patients_link'
+        '/app/patients/': 'patients_link'
     }
 
     if (path != undefined) {
@@ -34,8 +32,6 @@ function dropdown() {
         element.classList.add('hidden')
     }
 }
-
-
 
 (function () {
     decorationLink()

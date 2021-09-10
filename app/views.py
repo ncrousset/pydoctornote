@@ -20,16 +20,17 @@ def list_patient_view(request):
 
     search = request.GET.get('search')
 
-    if search is not None:
-        patients = Patient.objects.filter(
-            Q(first_name__icontains=search) | Q(last_name__icontains=search),
-        )
-    else:
-        patients = Patient.objects.all()
+    if search is None:
+        search = ''
+
+    patients = Patient.objects.filter(
+        Q(first_name__icontains=search) | Q(last_name__icontains=search),
+    )
 
     patients_dict = {
         'patients': patients,
-        'form': PatientForm
+        'form': PatientForm,
+        'search': search
     }
 
     return render(request, 'app/patients_list_view.html', patients_dict)

@@ -1,7 +1,9 @@
+from django.contrib.postgres import search
 from django.views.generic import CreateView, UpdateView
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 from accounts.models import CustomUser as User
 
@@ -15,7 +17,15 @@ def dashboard(request):
 
 @login_required(redirect_field_name='')
 def list_patient_view(request):
-    patients = Patient.objects.all()
+
+    search = request.GET.get('search')
+
+    if search is not None:
+        patients = Patient.objects.filter(
+            Q(first_name__icontains=search) | Q(last_name__icontains=search),
+        )
+    else:
+        patients = Patient.objects.all()
 
     patients_dict = {
         'patients': patients,

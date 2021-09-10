@@ -9,6 +9,7 @@ python-dotenv = "*"
 psycopg2 = "*"
 whitenoise = "*"
 django-widget-tweaks = "*"
+gunicorn = "*"
 
 [dev-packages]
 

@@ -24,6 +24,19 @@ function decorationLink() {
     }
 }
 
+function dropdown() {
+    let element = document.getElementById('dropdown')
+    let isHidden = element.className.split(' ').includes('hidden')
+
+    if (isHidden) {
+        element.classList.remove('hidden')
+    } else {
+        element.classList.add('hidden')
+    }
+}
+
+
+
 (function () {
     decorationLink()
 })();

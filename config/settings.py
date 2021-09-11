@@ -24,12 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c(vq+9j77^lwb1^0z#*3g+f!q9dp_a%n05$whw5_m#y6ekf$r*'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '143.244.147.32',
+                 'doctornote.app', 'www.doctornote.app']
 
 
 # Application definition
